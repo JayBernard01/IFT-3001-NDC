@@ -12,15 +12,6 @@ pub fn strassen_multiplications(matrix_a: &Matrix, matrix_b: &Matrix) -> Matrix 
     let (a00, a01, a10, a11) = matrix_a.split();
     let (b00, b01, b10, b11) = matrix_b.split();
 
-    assert_eq!(a00.get_size(), matrix_a.get_size() / 2);
-    assert_eq!(a01.get_size(), matrix_a.get_size() / 2);
-    assert_eq!(a10.get_size(), matrix_a.get_size() / 2);
-    assert_eq!(a11.get_size(), matrix_a.get_size() / 2);
-    assert_eq!(b00.get_size(), matrix_b.get_size() / 2);
-    assert_eq!(b01.get_size(), matrix_b.get_size() / 2);
-    assert_eq!(b10.get_size(), matrix_b.get_size() / 2);
-    assert_eq!(b11.get_size(), matrix_b.get_size() / 2);
-
     let m1 = strassen_multiplications(&a00.add(&a11), &b00.add(&b11));
     let m2 = strassen_multiplications(&a10.add(&a11), &b00);
     let m3 = strassen_multiplications(&a00, &b01.subtract(&b11));

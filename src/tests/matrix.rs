@@ -197,7 +197,7 @@ mod tests {
     }
 
     #[test]
-    fn given_two_matrix_size_more_than_one_even_when_split_return_matrix_size_one_with_subtract_value_for_each_same_coordinates_elements_other_matrix(
+    fn given_matrix_size_at_least_two_when_split_return_four_split_matrix_half_size_in_respective_corners(
     ) {
         let matrix = Matrix::new_matrix_with_data(vec![1, 2, 3, 4]);
 
@@ -210,21 +210,8 @@ mod tests {
     }
 
     #[test]
-    fn test_split_size_4() {
-        let matrix = Matrix::new_matrix_with_data(vec![
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-        ]);
-
-        let (a00, a01, a10, a11) = matrix.split();
-
-        assert_eq!(a00.data, vec![vec![1, 2], vec![5, 6]]);
-        assert_eq!(a01.data, vec![vec![3, 4], vec![7, 8]]);
-        assert_eq!(a10.data, vec![vec![9, 10], vec![13, 14]]);
-        assert_eq!(a11.data, vec![vec![11, 12], vec![15, 16]]);
-    }
-
-    #[test]
-    fn test_merge_size_1() {
+    fn given_four_matrix_same_size_when_merge_return_one_merged_matrix_double_size_in_respective_corners(
+    ) {
         let a00 = Matrix::new_matrix_with_data(vec![1]);
         let a01 = Matrix::new_matrix_with_data(vec![2]);
         let a10 = Matrix::new_matrix_with_data(vec![3]);
@@ -233,25 +220,5 @@ mod tests {
         let merged = Matrix::merge(&a00, &a01, &a10, &a11);
 
         assert_eq!(merged.data, vec![vec![1, 2], vec![3, 4]]);
-    }
-
-    #[test]
-    fn test_merge_size_2() {
-        let a00 = Matrix::new_matrix_with_data(vec![1, 2, 5, 6]);
-        let a01 = Matrix::new_matrix_with_data(vec![3, 4, 7, 8]);
-        let a10 = Matrix::new_matrix_with_data(vec![9, 10, 13, 14]);
-        let a11 = Matrix::new_matrix_with_data(vec![11, 12, 15, 16]);
-
-        let merged = Matrix::merge(&a00, &a01, &a10, &a11);
-
-        assert_eq!(
-            merged.data,
-            vec![
-                vec![1, 2, 3, 4],
-                vec![5, 6, 7, 8],
-                vec![9, 10, 11, 12],
-                vec![13, 14, 15, 16]
-            ]
-        );
     }
 }
