@@ -1,6 +1,7 @@
 use std::usize;
 
-/// We assume that the vector is already sorted, because we would otherwise iterate over all elements
+/// We assume that the vector is already sorted, because we would otherwise iterate over all elements.
+/// Useful for pre-sorted static distribution.
 pub fn binary_search(vector: Vec<usize>, value: usize) -> Option<usize> {
     let vector_size = vector.len();
     if vector_size == 0 {

@@ -20,6 +20,7 @@ pub fn merge(left: Vec<usize>, right: Vec<usize>) -> Vec<usize> {
     temp
 }
 
+/// Useful when we want to guarantee theta(n log n) to sort, but requires more memory, not used in practice
 pub fn merge_sort(mut vector: Vec<usize>) -> Vec<usize> {
     if vector.len() <= 1 {
         return vector;
